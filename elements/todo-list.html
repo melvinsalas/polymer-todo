@@ -33,7 +33,6 @@
                     var index = this.todos.indexOf(evt.detail);
                     this.splice('todos', index, 1);
                     toast.text = evt.detail.name + " was deleted!";
-                    console.log(toast.text);
                     toast.open();
                 }
             });
