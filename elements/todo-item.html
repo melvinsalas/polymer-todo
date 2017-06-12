@@ -1,0 +1,33 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+<dom-module id='todo-item'>
+    <template>
+        <style>
+        paper-material {
+            padding: 10px 0px 10px 10px;
+        }
+        .btn-delete{
+            color:#3f51b5;
+            float: right;
+            bottom: 9px;
+        }
+        </style>
+        <paper-material elevation="1">
+            <paper-checkbox checked="{{todo.done}}">
+                {{todo.name}}
+            </paper-checkbox>
+            <paper-icon-button class="btn-delete" icon="delete" on-tap="_delete"></paper-icon-button>
+        </paper-material>
+    </template>
+    <script>
+    (function() {
+        Polymer({
+            is: 'todo-item',
+            _delete: function(){
+                this.fire('delete',this.todo);
+            }
+        });
+    })();
+    </script>
+</dom-module>

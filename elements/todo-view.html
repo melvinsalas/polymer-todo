@@ -1,0 +1,55 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="todo-data.html">
+<link rel="import" href="todo-list.html">
+
+<dom-module id="todo-view">
+    <template>
+    <style>
+        paper-icon-button{
+            color: #3f51b5;
+        }
+        paper-icon-button:hover{
+            color:darkblue;
+        }
+    </style>
+    <div layout horizontal>
+        <paper-input-container>
+            <label>Add new TO-DO item</label>
+            <input is="iron-input" bind-value={{value}} on-keydown="saveItem">
+            <paper-icon-button suffix icon="add-box" on-tap="_add"></paper-icon-button>
+        </paper-input-container>
+    </div>
+	<div>
+		<todo-data todos = {{todos}}></todo-data>
+         <h3>Uncompleted items</h3>
+        <todo-list filter-by ="uncompleted" todos = {{todos}}></todo-list>
+        <h3>Completed items</h3>
+        <todo-list filter-by= "completed" todos = {{todos}}></todo-list>
+
+	</div>
+    </template>
+    <script>
+    (function() {
+        Polymer({
+            is: 'todo-view',
+            _add: function(value){
+                if(this.value){
+                    this.push('todos',{
+                        name: this.value,
+                        done: false
+                    });
+                    this.value = null;
+                }
+            },
+            saveItem:function(e) {
+                if(e.keyCode == 13) {
+                    this._add(e.target.value);
+                }
+            }
+        });
+    })();
+    </script>
+</dom-module>
