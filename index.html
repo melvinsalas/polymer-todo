@@ -34,8 +34,6 @@
     <!-- Because this project uses vulcanize this should be your only html import
        in this file. All other imports should go in elements.html -->
     <link rel="import" href="elements/elements.html">
-    <!-- For shared styles, shared-styles.html import in elements.html -->
-    <style is="custom-style" include="shared-styles"></style>
 </head>
 
 <body>
@@ -59,10 +57,8 @@
             </paper-toolbar>
             <!-- Main Content -->
             <div class="content">
-                <section data-route="home" tabindex="-1">
-                    <paper-material elevation="1">
-                        <todo-view></todo-view>
-                    </paper-material>
+                <section class="home" data-route="home" tabindex="-1">
+                    <todo-view></todo-view>
                 </section>
             </div>
         </paper-scroll-header-panel>
